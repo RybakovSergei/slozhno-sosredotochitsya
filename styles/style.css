@@ -1,5 +1,6 @@
 .page {
-  background: var(--main-background-color);
+  background: var(--header-background-image);
+  background-attachment: fixed;
   margin: 0;
 }
 
@@ -28,7 +29,6 @@
 
 .header {
   display: grid;
-  background: var(--header-background-image);
   height: 100vh;
 }
 
@@ -77,7 +77,7 @@
 
 @media ((width >= 1024px)) {
   .decorated-zone {
-    height: 768px;
+    min-height: 768px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: min-content 1fr 180px min-content;
   }
@@ -233,11 +233,7 @@
 }
 
 .header__theme-menu-item:hover {
-  cursor: pointer;
   border: 1px solid var(--hover-focus-border-color);
-}
-
-.header__theme-menu-button:hover {
   cursor: pointer;
 }
 
@@ -246,7 +242,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
-  border-color: var(--border-color);
+  border-bottom: 1px solid var(--hover-focus-border-color);
 }
 
 .header__title {
@@ -356,13 +352,13 @@
   margin: 0;
 }
 
-.thoughts-in-lines {
+.thoughts-in-lines__p1 {
   margin-top: 40px;
   padding: 0 10px 0 10px;
 }
 
 @media (width >= 767px) {
-  .thoughts-in-lines {
+  .thoughts-in-lines__p1 {
     padding: 0 20px 0 20px;
     margin-top: 60px;
     display: flex;
@@ -370,12 +366,12 @@
   }
 }
 
-@media (width <= 1023px){
-  .thoughts-in-lines > div > h2:first-of-type {
+@media (width <= 1023px) {
+  .thoughts-in-lines__p1 > h2:first-of-type {
     margin-top: 50px;
   }
-  .thoughts-in-lines > .thoughts-in-lines__p1 > h2:first-of-type {
-    margin-top: 10px;
+  .thoughts-in-lines__p1 > h2:first-of-type {
+    margin-top: 0;
   }
 }
 
@@ -423,6 +419,18 @@
   grid-area: a3;
 }
 
+.thoughts-in-lines__p2 {
+  padding: 0 10px 0 10px;
+}
+
+@media (width >= 767px) {
+  .thoughts-in-lines__p2 {
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 @media (width >= 767px) and (width < 1024px) {
   .thoughts-in-lines__p2 {
     margin-top: 80px;
@@ -467,6 +475,18 @@
   grid-area: b4;
 }
 
+.thoughts-in-lines__p3 {
+  padding: 0 10px 0 10px;
+}
+
+@media (width >= 767px) {
+  .thoughts-in-lines__p3 {
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 @media (width < 767px) {
   .thoughts-in-lines__p3 {
     margin-top: 50px;
@@ -505,12 +525,11 @@
   }
 }
 
-@media (width <= 767px){
-.thoughts-in-lines__p3 > :nth-child(2) {
-  margin-top: 20px;
+@media (width <= 767px) {
+  .thoughts-in-lines__p3 > :nth-child(2) {
+    margin-top: 20px;
+  }
 }
-}
-
 
 @media (width >= 1024px) {
   .thoughts-in-lines__p3 {
@@ -587,7 +606,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 23.4px; /* 130% */
-  min-height: 23px;
   background: var(--another-elements-color);
   grid-area: block-subtitle;
 }
@@ -610,6 +628,33 @@
   color: var(--main-text-color);
   text-shadow: var(--another-elements-color) 2px 2px;
   text-decoration: none;
+  position: relative;
+  display: inline;
+  padding: 1px;
+}
+
+.accent-text:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Располагаем под текстом */
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--hover-focus-link-border-color);
+}
+
+.accent-text:focus {
+  outline: none;
+}
+
+.accent-text:focus-visible::before {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Располагаем под текстом */
+  left: 1px;
+  top: 6px;
+  right: 0;
+  width: 100%;
+  outline: 1px solid var(--hover-focus-link-border-color);
 }
 
 .thoughts-in-pictures {
