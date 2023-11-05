@@ -421,6 +421,7 @@
 
 .thoughts-in-lines__p2 {
   padding: 0 10px 0 10px;
+  margin-top: 50px;
 }
 
 @media (width >= 767px) {
